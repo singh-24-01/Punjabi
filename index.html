@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apprendre le Pendjabi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gurmukhi:wght@400;700&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-text: #333333;
+      --color-accent: #0077cc;
+      --color-light: #f2f2f2;
+      --font-sans: 'Montserrat', sans-serif;
+      --font-gurm: 'Noto Sans Gurmukhi', serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-sans); line-height: 1.6; }
+    .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    nav { display: flex; justify-content: space-around; background: var(--color-bg); border-bottom: 1px solid var(--color-light); position: sticky; top: 0; z-index: 100; }
+    nav a { flex: 1; text-align: center; padding: 1rem 0; text-decoration: none; color: var(--color-text); font-weight: 500; position: relative; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em; transition: color 0.3s; }
+    nav a.active { color: var(--color-accent); }
+    nav a.active::after { content: ''; position: absolute; bottom: 0; left: 25%; width: 50%; height: 3px; background: var(--color-accent); border-radius: 2px; }
+    section { display: none; padding: 2rem 0; }
+    section.active { display: block; }
+    h1 { font-size: 1.8rem; margin-bottom: 1rem; font-weight: 700; }
+    p, h2 { margin-bottom: 1rem; }
+    h2 { font-size: 1.2rem; font-weight: 500; color: var(--color-accent); }
+    ul { list-style: none; margin-left: 1rem; }
+    li::before { content: '•'; color: var(--color-accent); display: inline-block; width: 1em; }
+    .grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; margin-top: 1.5rem; }
+    .cell { background: var(--color-light); border-radius: 8px; padding: 1rem; text-align: center; }
+    .character { font-family: var(--font-gurm); font-size: 2rem; }
+    .label { font-size: 0.75rem; margin-top: 0.3rem; display: block; text-transform: uppercase; }
+    .number-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(40px, 1fr)); gap: 0.5rem; margin-top: 1rem; }
+    .number-cell { background: var(--color-light); border-radius: 6px; padding: 0.5rem; text-align: center; font-size: 1.2rem; }
+    .quiz { margin-top: 2rem; display: flex; gap: 0.5rem; align-items: center; }
+    .quiz input { flex: 1; padding: 0.5rem; border: 1px solid var(--color-light); border-radius: 4px; font-size: 1rem; }
+    .quiz button { padding: 0.6rem 1rem; border: none; background: var(--color-accent); color: #fff; border-radius: 4px; cursor: pointer; }
+    .result { margin-top: 0.5rem; font-weight: 500; }
+    .flashcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .flashcard { background: var(--color-light); border-radius: 8px; padding: 1rem; text-align: center; cursor: pointer; transition: transform 0.2s; }
+    .flashcard:hover { transform: translateY(-3px); }
+    .front { font-size: 1.5rem; font-family: var(--font-gurm); }
+    .back { display: none; margin-top: 0.5rem; font-size: 0.9rem; }
+footer { background: var(--color-light); text-align: center; padding: 1rem 0; font-size: 0.9rem; }
+ 
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#general" class="active">Général</a>
+    <a href="#alphabet">Alphabet</a>
+    <a href="#numbers">Chiffres</a>
+    <a href="#phrases">Phrases survie</a>
+    <a href="#vocab">Vocabulaire</a>
+  </nav>
+
+  <div class="container">
+<section id="general" class="active">
+      <h1>Introduction au Punjabi et au Sikhisme</h1>
+      <h2>Origines & Histoire</h2>
+      <p>Le pendjabi est une langue indo-aryenne issue du vieux prakrit, apparue vers le Ier millénaire dans la région du Pendjab. Standardisé au XVIᵉ siècle par les gourous sikhs, le gurmukhi accompagne la littérature sacrée du Sikhisme.</p>
+      <h2>Les dix gourous sikhs</h2>
+      <ul>
+        <li>Guru Nanak Dev Ji (1469–1539)</li>
+        <li>Guru Angad Dev Ji (1504–1552)</li>
+        <li>Guru Amar Das Ji (1479–1574)</li>
+        <li>Guru Ram Das Ji (1534–1581)</li>
+        <li>Guru Arjan Dev Ji (1563–1606)</li>
+        <li>Guru Hargobind Ji (1595–1644)</li>
+        <li>Guru Har Rai Ji (1630–1661)</li>
+        <li>Guru Har Krishan Ji (1656–1664)</li>
+        <li>Guru Tegh Bahadur Ji (1621–1675)</li>
+        <li>Guru Gobind Singh Ji (1666–1708)</li>
+      </ul>
+      <h2>Le onzième gourou</h2>
+      <p>Après Guru Gobind Singh Ji, le onzième et dernier gourou est le livre sacré des Sikhs <strong>Sri Guru Granth Sahib Ji</strong>, considéré comme le guide spirituel éternel.</p>
+      <h2>Le Khalsa</h2>
+      <p>Le Khalsa, fondé en 1699 par Guru Gobind Singh Ji, désigne la communauté des Sikhs initiés (Amritdhari). Les membres portent les cinq articles de foi (les 5 K) et s’engagent à vivre selon les principes sikhs.</p>
+      <h2>Les cinq K</h2>
+      <ul>
+        <li><strong>Kesh</strong> – cheveux non coupés</li>
+        <li><strong>Kanga</strong> – petit peigne en bois</li>
+        <li><strong>Kara</strong> – bracelet en acier</li>
+        <li><strong>Kachera</strong> – sous-vêtements spécifiques</li>
+        <li><strong>Kirpan</strong> – petit poignard symbolique</li>
+      </ul>
+      <h2>Le Gurdwara & Le Langar</h2>
+      <p>Le Gurdwara est le lieu de culte sikh. Chaque Gurdwara offre gratuitement un <em>Langar</em>, une cuisine communautaire où tous les visiteurs, sans distinction, partagent un repas.</p>
+      <h2>Principes éthiques et pratiques</h2>
+      <ul>
+        <li>Croire en un Dieu unique (Waheguru)</li>
+        <li>Méditation (Simran) et prière (Ardas)</li>
+        <li>Service désintéressé (Seva) envers la communauté</li>
+        <li>Égalité de tous, rejet du système de castes</li>
+        <li>Vivre avec honnêteté, compassion et partage</li>
+      </ul>
+      <h2>Fêtes principales</h2>
+      <ul>
+        <li>Vaisakhi – Nouvel An sikh et fondation du Khalsa (13 avril)</li>
+        <li>Guru Nanak Jayanti – Naissance de Guru Nanak Dev Ji</li>
+        <li>Martyrdom de Guru Arjan Dev Ji – Commémoration</li>
+        <li>Bandi Chhor Divas – Libération de Guru Hargobind Ji (coïncide avec Diwali)</li>
+      </ul>
+    </section>
+
+    <section id="alphabet">
+      <h1>Alphabet Gurmukhi</h1>
+      <div class="grid">
+        <!-- Row 1 -->
+        <div class="cell"><span class="character">ੳ</span><span class="label">U</span></div>
+        <div class="cell"><span class="character">ਅ</span><span class="label">A</span></div>
+        <div class="cell"><span class="character">ੲ</span><span class="label">E</span></div>
+        <div class="cell"><span class="character">ਸ</span><span class="label">SA</span></div>
+        <div class="cell"><span class="character">ਹ</span><span class="label">HA</span></div>
+        <div class="cell"><span class="character">ਕ</span><span class="label">KA</span></div>
+        <!-- Row 2 -->
+        <div class="cell"><span class="character">ਖ</span><span class="label">KHA</span></div>
+        <div class="cell"><span class="character">ਗ</span><span class="label">GA</span></div>
+        <div class="cell"><span class="character">ਘ</span><span class="label">GHA</span></div>
+        <div class="cell"><span class="character">ਙ</span><span class="label">ṄA</span></div>
+        <div class="cell"><span class="character">ਚ</span><span class="label">CHA</span></div>
+        <div class="cell"><span class="character">ਛ</span><span class="label">CHHA</span></div>
+        <!-- Row 3 -->
+        <div class="cell"><span class="character">ਜ</span><span class="label">JA</span></div>
+        <div class="cell"><span class="character">ਝ</span><span class="label">JHA</span></div>
+        <div class="cell"><span class="character">ਞ</span><span class="label">ÑA</span></div>
+        <div class="cell"><span class="character">ਟ</span><span class="label">TA</span></div>
+        <div class="cell"><span class="character">ਠ</span><span class="label">THA</span></div>
+        <div class="cell"><span class="character">ਡ</span><span class="label">DA</span></div>
+        <!-- Row 4 -->
+        <div class="cell"><span class="character">ਢ</span><span class="label">DHA</span></div>
+        <div class="cell"><span class="character">ਣ</span><span class="label">NA</span></div>
+        <div class="cell"><span class="character">ਤ</span><span class="label">TA</span></div>
+        <div class="cell"><span class="character">ਥ</span><span class="label">THA</span></div>
+        <div class="cell"><span class="character">ਦ</span><span class="label">DA</span></div>
+        <div class="cell"><span class="character">ਧ</span><span class="label">DHA</span></div>
+        <!-- Row 5 -->
+        <div class="cell"><span class="character">ਨ</span><span class="label">NA</span></div>
+        <div class="cell"><span class="character">ਪ</span><span class="label">PA</span></div>
+        <div class="cell"><span class="character">ਫ</span><span class="label">PHA</span></div>
+        <div class="cell"><span class="character">ਬ</span><span class="label">BA</span></div>
+        <div class="cell"><span class="character">ਭ</span><span class="label">BHA</span></div>
+        <div class="cell"><span class="character">ਮ</span><span class="label">MA</span></div>
+        <!-- Row 6 -->
+        <div class="cell"><span class="character">ਯ</span><span class="label">YA</span></div>
+        <div class="cell"><span class="character">ਰ</span><span class="label">RA</span></div>
+        <div class="cell"><span class="character">ਲ</span><span class="label">LA</span></div>
+        <div class="cell"><span class="character">ਵ</span><span class="label">VA</span></div>
+        <div class="cell"><span class="character">ੜ</span><span class="label">ṜA</span></div>
+        <div class="cell"><span class="character">ਸ਼</span><span class="label">SHA</span></div>
+        <!-- Row 7 -->
+        <div class="cell"><span class="character">ਖ਼</span><span class="label">KHA</span></div>
+        <div class="cell"><span class="character">ਗ਼</span><span class="label">G.</span></div>
+        <div class="cell"><span class="character">ਜ਼</span><span class="label">ZA</span></div>
+        <div class="cell"><span class="character">ਫ਼</span><span class="label">FA</span></div>
+        <div class="cell"><span class="character">ਲ਼</span><span class="label">LA</span></div>
+        <div class="cell"><span class="character"></span><span class="label"></span></div>
+      </div>
+    </section>
+
+    <section id="numbers">
+      <h1>Chiffres & Nombres</h1>
+      <div class="number-grid">
+        <div class="number-cell">੦</div>
+        <div class="number-cell">੧</div>
+        <div class="number-cell">੨</div>
+        <div class="number-cell">੩</div>
+        <div class="number-cell">੪</div>
+        <div class="number-cell">੫</div>
+        <div class="number-cell">੬</div>
+        <div class="number-cell">੭</div>
+        <div class="number-cell">੮</div>
+        <div class="number-cell">੯</div>
+      </div>
+      <div class="quiz">
+        <input type="text" id="answer-quiz" placeholder="Écris 27">
+        <button id="check-quiz">Vérifier</button>
+      </div>
+      <p id="quiz-result" class="result"></p>
+    </section>
+    <section id="phrases">
+      <h1>Phrases de survie</h1>
+      <h2>Salutations & Politesse</h2>
+      <ul>
+        <li>ਸਤ ਸ੍ਰੀ ਅਕਾਲ (Sat Sri Akaal) – Bonjour</li>
+        <li>ਸ਼ੁਕਰੀਆ (Shukriā) – Merci</li>
+        <li>ਕਿਰਪਾ ਕਰਕੇ (Kirpā karke) – S'il vous plaît</li>
+        <li>ਮਾਫ਼ ਕਰਨਾ (Māf karnā) – Pardon / Désolé</li>
+        <li>ਅਲਵਿਦਾ (Alvidā) – Au revoir</li>
+        <li>ਸੁਤੇਰਾ ਦਿਨ (Sutērā din) – Bonne journée</li>
+      </ul>
+      <h2>Se présenter</h2>
+      <ul>
+        <li>ਮੇਰਾ ਨਾਂ ... ਹੈ (Mera nā̃ ... hai) – Je m'appelle ...</li>
+        <li>ਮੈਂ ... ਹਾਂ (Maĩ ... hā̃) – Je suis ...</li>
+        <li>ਮੈਂ ਫ਼ਰਾਂਸੀਸੀ ਹਾਂ (Maĩ pharānsīsī hā̃) – Je suis français(e)</li>
+        <li>ਮੈਂ ... ਸਾਲ ਦਾ/ਦੀ ਹਾਂ (Maĩ ... sāl dā/dī hā̃) – J'ai ... ans</li>
+      </ul>
+      <h2>Demander son chemin</h2>
+      <ul>
+        <li>... ਕਿੱਡੇ ਹੈ? (... kidde hai?) – Où est ... ?</li>
+        <li>ਸੱਜੇ/ਖੱਬੇ (sajjē/khabbē) – à droite/à gauche</li>
+        <li>ਸਿੱਧਾ (siddhā) – Tout droit</li>
+        <li>ਕਿਰਪਾ ਕਰਕੇ ਰੁਕੋ (Kirpā karke rukō) – Arrêtez, s'il vous plaît</li>
+        <li>ਇਹਾੲੀ ਕਿੱਥੇ ਹੈ? (Ithē kithē hai?) – Où suis-je ?</li>
+      </ul>
+      <h2>Commander un repas</h2>
+      <ul>
+        <li>ਮੈਂ ਇੱਕ ... ਲੈਣਾ ਚਾਹੁੰਦਾ ਹਾਂ (Maĩ ikk ... laiṇā cāhũdā hā̃) – Je voudrais un(e) ...</li>
+        <li>ਕੀ ਮੇਰੇ ਲਈ ਵਾਢਾ ਹੋਵੇਗਾ? (Kī mērē la'ī vāḍhā hōvēgā?) – Pouvez-vous me recommander ?</li>
+        <li>ਇੱਕ ਗਿਲਾਸ ਪਾਣੀ (Ikk gilās pāṇī) – Un verre d'eau</li>
+        <li>ਬਿੱਲ ਕਿਰਪਾ ਕਰਕੇ (Bill kirpā karke) – L'addition, s'il vous plaît</li>
+      </ul>
+      <h2>Shopping & Paiement</h2>
+      <ul>
+        <li>ਇਹ ਕੀ ਕੀਮਤ ਹੈ? (Ih kī kīmat hai?) – Quel est le prix ?</li>
+        <li>ਸਸਤਾ (Sastā) – Pas cher</li>
+        <li>ਮੁੱਲ ਘਟਾਓ (Mull ghatāō) – Baisser le prix</li>
+        <li>ਮੁਝੇ ਇਹ ਚਾਹੀਦਾ ਹੈ (Mujhē ih cāhīdā hai) – J'en veux ceci</li>
+      </ul>
+      <h2>Hébergement</h2>
+      <ul>
+        <li>ਮੇਰੇ ਲਈ ਕਮਰਾ ਰਿਜ਼ਰਵ ਕਰੋ (Mērē la'ī kamrā rizarv karō) – Réservez une chambre pour moi</li>
+        <li>ਕੀ ਨਾਸ਼ਤਾ ਸ਼ਾਮਿਲ ਹੈ? (Kī nāśtā śāmil hai?) – Le petit-déjeuner est-il inclus ?</li>
+        <li>ਚੈੱਕ-ਆਊਟ ਕਦੋਂ ਹੈ? (Chaīk-ā'uṭ kadō̃ hai?) – À quelle heure est le départ ?</li>
+      </ul>
+      <h2>Santé & Urgence</h2>
+      <ul>
+        <li>ਮੈਨੂੰ ਚੰਗਾ ਨਹੀਂ ਲੱਗ ਰਿਹਾ (Mainū̃ caṅgā nahī̃ lag rihā) – Je ne me sens pas bien</li>
+        <li>ਮਦਦ ਕਰੋ (Madad karō) – Aidez-moi</li>
+        <li>ਐਮਬੁਲੈਂਸ (Ambulance) – Ambulance</li>
+        <li>ਡਾਕਟਰ (Ḍāktor) – Docteur</li>
+      </ul>
+      <h2>Communication</h2>
+      <ul>
+        <li>ਫ਼ੋਨ ਕਰਨਾ (Phone karnā) – Appeler</li>
+        <li>ਮੈਨੂੰ ਇੰਟਰਨੈੱਟ ਚਾਹੀਦਾ (Mainū̃ internet cāhīdā) – J'ai besoin d'internet</li>
+        <li>ਕਿਤਾਬਨ (Kitāban) – Message</li>
+      </ul>
+      <h2>Temps & Date</h2>
+      <ul>
+        <li>ਅੱਜ (Ajj) – Aujourd'hui</li>
+        <li>ਕੱਲ੍ਹ (Kal) – Demain / Hier (selon le contexte)</li>
+        <li>ਕਿੰਨੇ ਵਜੇ? (Kinnē vajē?) – Quelle heure est-il ?</li>
+        <li>ਅਪ੍ਰੈਲ/ਮਈ/ਜੂਨ (April/May/June) – Mois de l'année</li>
+      </ul>
+      <h2>Expressions diverses</h2>
+      <ul>
+        <li>ਬਹੁਤ ਵਧੀਆ (Bahut vadhīā) – Très bien</li>
+        <li>ਠੀਕ ਹੈ (Ṭhīk hai) – D'accord</li>
+        <li>ਬਰਬਾਦ (Barbād) – Mauvais</li>
+        <li>ਤੁਹਾਡਾ ਕੀ ਖ਼ਿਆਲ ਹੈ? (Tuhāḍā kī khi'āl hai?) – Qu'en pensez-vous ?</li>
+      </ul>
+    </section>
+<section id="vocab">
+      <h1>Vocabulaire thématique</h1>
+      <h2>Famille </h2>
+      <div class="flashcards">
+        <div class="flashcard"><div class="front">ਪਿਤਾ</div><div class="back">Pita – Père</div></div>
+        <div class="flashcard"><div class="front">ਮਾਤਾ</div><div class="back">Mata – Mère</div></div>
+        <div class="flashcard"><div class="front">ਭਾਈ</div><div class="back">Bhāī – Frère</div></div>
+        <div class="flashcard"><div class="front">ਬਹਿਨ</div><div class="back">Bahan – Sœur</div></div>
+        <div class="flashcard"><div class="front">ਦਾਦਾ</div><div class="back">Dādā – Grand-père</div></div>
+        <div class="flashcard"><div class="front">ਦਾਦੀ</div><div class="back">Dādī – Grand-mère</div></div>
+      </div>
+      <h2>Nourriture</h2>
+      <div class="flashcards">
+        <div class="flashcard"><div class="front">ਰੋਟੀ</div><div class="back">Roti – Pain</div></div>
+        <div class="flashcard"><div class="front">ਚਾਹ</div><div class="back">Chāh – Thé</div></div>
+        <div class="flashcard"><div class="front">ਦਾਲ</div><div class="back">Dāl – Lentilles</div></div>
+        <div class="flashcard"><div class="front">ਚਾਵਲ</div><div class="back">Chāval – Riz</div></div>
+        <div class="flashcard"><div class="front">ਸਬਜ਼ੀ</div><div class="back">Sabzī – Légumes</div></div>
+        <div class="flashcard"><div class="front">ਦਹੀਂ</div><div class="back">Dahī̃ – Yaourt</div></div>
+      </div>
+      <h2>Maison & Objets du quotidien</h2>
+      <div class="flashcards">
+        <div class="flashcard"><div class="front">ਕੁਰਸੀ</div><div class="back">Kursī – Chaise</div></div>
+        <div class="flashcard"><div class="front">ਮੇਜ਼</div><div class="back">Mez – Table</div></div>
+        <div class="flashcard"><div class="front">ਪੰਖਾ</div><div class="back">Pankhā – Ventilateur</div></div>
+        <div class="flashcard"><div class="front">ਦਰਵਾਜਾ</div><div class="back">Darvājā – Porte</div></div>
+        <div class="flashcard"><div class="front">ਕਿਤਾਬ</div><div class="back">Kitāb – Livre</div></div>
+        <div class="flashcard"><div class="front">ਬੱਤੀ</div><div class="back">Battī – Lampe</div></div>
+      </div>
+      <h2>Couleurs</h2>
+      <div class="flashcards">
+        <div class="flashcard"><div class="front">ਨੀਲਾ</div><div class="back">Nīlā – Bleu</div></div>
+        <div class="flashcard"><div class="front">ਲਾਲ</div><div class="back">Lāl – Rouge</div></div>
+        <div class="flashcard"><div class="front">ਹਰਾ</div><div class="back">Harā – Vert</div></div>
+        <div class="flashcard"><div class="front">ਪੀਲਾ</div><div class="back">Pīlā – Jaune</div></div>
+        <div class="flashcard"><div class="front">ਕਾਲਾ</div><div class="back">Kālā – Noir</div></div>
+        <div class="flashcard"><div class="front">ਚਿੱਟਾ</div><div class="back">Ciṭṭā – Blanc</div></div>
+      </div>
+      <h2>Vêtements</h2>
+      <div class="flashcards">
+        <div class="flashcard"><div class="front">ਕਮੀਜ਼</div><div class="back">Kamīz – Chemise</div></div>
+        <div class="flashcard"><div class="front">ਪੈਂਟ</div><div class="back">Paint – Pantalon</div></div>
+        <div class="flashcard"><div class="front">ਜੁੱਤਾ</div><div class="back">Juttā – Chaussures</div></div>
+        <div class="flashcard"><div class="front">ਲਿਬਾਸ</div><div class="back">Libās – Robe</div></div>
+        <div class="flashcard"><div class="front">ਟੋਪੀ</div><div class="back">Ṭopī – Chapeau</div></div>
+        <div class="flashcard"><div class="front">ਕੋਟ</div><div class="back">Koṭ – Manteau</div></div>
+      </div>
+      <h2>Métiers</h2>
+      <div class="flashcards">
+        <div class="flashcard"><div class="front">ਡਾਕਟਰ</div><div class="back">Ḍāktor – Docteur</div></div>
+        <div class="flashcard"><div class="front">ਅਧਿਆਪਕ</div><div class="back">Adhiāpaka – Enseignant</div></div>
+        <div class="flashcard"><div class="front">ਇੰਜੀਨੀਅਰ</div><div class="back">Injinī'ar – Ingénieur</div></div>
+        <div class="flashcard"><div class="front">ਕਿਸਾਨ</div><div class="back">Kisān – Agriculteur</div></div>
+        <div class="flashcard"><div class="front">ਡ੍ਰਾਈਵਰ</div><div class="back">Ḍrā'ivar – Chauffeur</div></div>
+        <div class="flashcard"><div class="front">ਸ਼ੈਫ਼</div><div class="back">Shef – Cuisinier</div></div>
+      </div>
+    </section>
+
+  </div>
+ <footer>
+    <p>&copy; Sandeep-Singh 2025</p>
+  </footer>
+  <script>
+    // Gestion des onglets
+    document.querySelectorAll('nav a').forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelectorAll('nav a').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.getAttribute('href').substring(1)).classList.add('active');
+      });
+    });
+    // Quiz dynamique
+    let currentNum;
+    function newQuiz() {
+      currentNum = Math.floor(Math.random() * 100);
+      document.getElementById('answer-quiz').value = '';
+      document.getElementById('answer-quiz').placeholder = 'Écris ' + currentNum;
+      document.getElementById('quiz-result').textContent = '';
+    }
+    document.getElementById('check-quiz').addEventListener('click', () => {
+      const ans = document.getElementById('answer-quiz').value.trim();
+      const res = document.getElementById('quiz-result');
+      res.textContent = ans === currentNum.toString() ? '✅ Correct !' : '❌ Essayez encore.';
+      newQuiz();
+    });
+    newQuiz();
+    // Flashcards toggle
+    document.querySelectorAll('.flashcard').forEach(card => {
+      card.addEventListener('click', () => card.querySelector('.back').style.display = 'block');
+    });
+  </script>
+</body>
+</body>
+</html>
